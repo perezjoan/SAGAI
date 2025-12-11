@@ -1,12 +1,13 @@
 
 # SCENE ASSESSMENT WITH LLaVA
 
-**Version**: 1.0  
+**Version**: 2.0 
 **Project Github**: [https://github.com/perezjoan/SAGAI](https://github.com/perezjoan/SAGAI)
 
 ## 1. Description
 
-This script enables batch scoring of street-level images using the LLaVA (Large Language and Vision Assistant) model within a Google Colab environment. It combines two core steps: first, the LLaVA source code is cloned from GitHub to configure the model structure; second, pretrained vision-language weights— llava-v1.6-mistral-7b—are downloaded from Hugging Face to enable inference. Unlike standard captioning or reasoning workflows, this script is designed to perform fast, lightweight numeric scoring of images based on a custom prompt. Three predefined tasks are included: Categorization (e.g., rural vs. urban), Counting (e.g., number of visible shops), and Measuring (e.g., estimated sidewalk width in meters). Only one task is active at a time, determined by setting a `selected_task` variable (T1, T2, or T3). Users are encouraged to write their own scoring logic and prompts by modifying the prompt templates provided in the script. The results are saved into a spreadsheet-style .csv. A resuming mechanism ensures that previously processed images are skipped automatically in case the session is interrupted.
+Module 3 performs automated semantic scoring of street-level images using LLaVA-Next v1.6 (Mistral-7B backbone) in a fully zero-shot manner.
+Unlike the original v1.0 implementation—which relied on cloning the evolving LLaVA GitHub repository and manually stitching model components—v2.0 uses the official Hugging Face LLaVA-Next implementation exclusively, ensuring stability and long-term compatibility. This module loads a vision-language model directly from Hugging Face, formats prompts using the model’s built-in `apply_chat_template`, performs inference on each image, extracts a numerical score, and writes results to a resumable CSV. Three predefined tasks are included: Categorization (e.g., rural vs. urban), Counting (e.g., number of visible shops), and Measuring (e.g., estimated sidewalk width in meters). Only one task is active at a time, determined by setting a `selected_task` variable (T1, T2, or T3). Users are encouraged to write their own scoring logic and prompts by modifying the prompt templates provided in the script. The results are saved into a spreadsheet-style .csv. A resuming mechanism ensures that previously processed images are skipped automatically in case the session is interrupted.
 
 ## 2. Key Features
 
@@ -15,10 +16,10 @@ This script enables batch scoring of street-level images using the LLaVA (Large 
 - Works with `.jpg`, `.jpeg`, and `.png` files.
 - Skips any image ending in `_NA.jpg`
 
-### LLaVA Model Setup
-- Uses Hugging Face's `snapshot_download` to load pretrained weights (default: `llava-v1.6-mistral-7b`).
-- Runs with 4-bit quantization for memory-efficient inference in Colab GPU environments.
-- Supports easy model switching by editing the `repo_id` and `model_path`.
+### Hugging Face–Native LLaVA Loading
+- Uses `llava-hf/llava-v1.6-mistral-7b-hf`
+- Runs with 4-bit quantization for memory-efficient inference in Colab GPU environments but can be switched to 8-bit
+- Compatible with any other LLavaNext model by changing the model ID
 
 ### Numerical Scoring Pipeline
 - Ideal for tasks that require simple scalar outputs per image (e.g., 0 = no shop, 1 = one shop, 2 = multiple shops).
@@ -54,8 +55,8 @@ Output paths and folders will be created automatically based on the case name. I
 
 ## 4. Additional Information
 
-The script loads a vision-language model from Hugging Face using `snapshot_download`. You can change the model by editing the `repo_id` (e.g., to `llava-hf/llava-1.5-7b-hf`) and updating `model_path` accordingly. If you're using a private model, make sure to log in via `huggingface_hub.login(token=...)` before downloading. Public models require no authentication.
+Adding your Hugging Face token in Colab Notebook Secrets is optional, but it significantly speeds up model downloads and prevents rate-limit slowdowns. Simply store your token as HF_TOKEN in Colab settings, and SAGAI will use it automatically during model loading.
 
-The model is loaded with 4-bit quantization via `BitsAndBytesConfig`, keeping memory usage under 6 GB on most GPUs. You can switch to 8-bit loading by replacing `load_in_4bit=True` with `load_in_8bit=True`, and removing the `bnb_4bit_*` arguments.
+The model is loaded in 4-bit quantization using Hugging Face’s built-in `load_in_4bit=True`, which keeps memory usage low enough for most Colab GPUs. You can switch to 8-bit by using `load_in_8bit=True` instead, or remove both parameters to load the model in full precision.
 
 If your images were generated using the companion script STREET VIEW BATCH DOWNLOADER, the script will automatically ignore any images with `_NA` in the filename—these indicate locations where Google Street View returned no visual data.
