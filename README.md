@@ -1,7 +1,7 @@
 # Streetscape Analysis with Generative AI (SAGAI)
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-v1.0-brightgreen)](https://github.com/perezjoan/SAGAI/releases)
+[![Version](https://img.shields.io/badge/Version-v1.1-brightgreen)](https://github.com/perezjoan/SAGAI/releases)
 [![Colab Compatible](https://img.shields.io/badge/Google%20Colab-Compatible-yellow.svg)](https://colab.research.google.com/)
 
 **SAGAI** is an open-source, modular workflow for scoring and mapping street-level urban environments using **generative vision-language models**—specifically a lightweight version of **LLaVA (Large Language and Vision Assistant)**. It enables scalable, prompt-driven interpretation of **Google Street View** imagery using only a geographic bounding box—requiring no pre-labeled data, specialized hardware, or deep learning expertise.
@@ -29,9 +29,13 @@ It supports a growing range of tasks, including:
 - 🧩 Plus any other **prompt-driven visual analysis** task—simply adapt the prompt template.
 ---
 
+## ⚠️ Updates
+# v1.1
+In early 2025, Google Colab introduced major backend updates (Python 3.12, NumPy ≥ 2.0, PyTorch ≥ 2.2) that caused compatibility issues with the original SAGAI Module 3, which relied on the GitHub version of the LLaVA repository. This GitHub codebase evolves rapidly and is not synchronized with the stable Hugging Face checkpoints, leading to errors such as missing modules, incompatible constructors, and NumPy binary mismatches. To ensure long-term stability, Module 3 has now been fully refactored to use the official Hugging Face LLaVA-Next (v1.6 Mistral) implementation (LlavaNextProcessor and LlavaNextForConditionalGeneration), without cloning or importing the LLaVA GitHub repository. This update includes: a complete switch to HF-managed model loading (no more git clone, no custom vision tower loading), a fully rewritten multimodal forward pass using apply_chat_template(), robust extraction of numeric outputs from model responses, improved reproducibility and compatibility with future Colab updates and support for loading any HF-hosted LLaVA model.
+
 ## 🧭 Workflow Overview
 
-SAGAI v1.0 is organized into four Python modules:
+SAGAI v1.1 is organized into four Python modules:
 
 ![SAGAI Diagram](https://github.com/perezjoan/SAGAI/blob/images/sagai%20diagram.png)
 
@@ -39,7 +43,7 @@ SAGAI v1.0 is organized into four Python modules:
 |--------------|----------------------------------------------------------------------------------------------------|-----------|---------------------------------------------|
 | **Module 1** | Generate points along the OSM street network in a bounding box                                     | v1.0    | [Module 1 Notice](https://github.com/perezjoan/SAGAI/blob/main/NOTICE_MODULE_1.md)  |
 | **Module 2** | Download Google Street View images at each point                                                   | v1.0    | [Module 2 Notice](https://github.com/perezjoan/SAGAI/blob/main/NOTICE_MODULE_2.md)  |
-| **Module 3** | Use LLaVA-v1.6-Mistral-7B to score the images via prompt                                         | v1.0    | [Module 3 Notice](https://github.com/perezjoan/SAGAI/blob/main/NOTICE_MODULE_3.md)  |
+| **Module 3** | Use LLaVA-v1.6-Mistral-7B to score the images via prompt                                         | v2.0    | [Module 3 Notice](https://github.com/perezjoan/SAGAI/blob/main/NOTICE_MODULE_3.md)  |
 | **Module 4** | Aggregate and map the scores at both point and street levels                                       | v1.0    | [Module 4 Notice](https://github.com/perezjoan/SAGAI/blob/main/NOTICE_MODULE_4.md)  |
 
 <sub>📄 *Each notice includes detailed descriptions, version info, feature lists, and usage instructions for the corresponding module.*</sub>
