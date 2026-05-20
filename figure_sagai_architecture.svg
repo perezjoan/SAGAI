@@ -1,0 +1,123 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <rect width="900" height="420" fill="#ffffff"/>
+
+  <!-- Section labels -->
+  <text x="195" y="22" text-anchor="middle" font-size="13" font-weight="600" fill="#888">Geospatial Data</text>
+  <text x="530" y="22" text-anchor="middle" font-size="13" font-weight="600" fill="#888">VLM Inference (UVLM)</text>
+  <text x="815" y="22" text-anchor="middle" font-size="13" font-weight="600" fill="#888">Visualization</text>
+
+  <!-- Vertical separators -->
+  <line x1="350" y1="10" x2="350" y2="410" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="6,4"/>
+  <line x1="730" y1="10" x2="730" y2="410" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="6,4"/>
+
+  <!-- Block 1: OSM -->
+  <rect x="30" y="40" width="290" height="140" rx="8" fill="#fff" stroke="#2ecc71" stroke-width="2"/>
+  <rect x="30" y="40" width="290" height="30" rx="8" fill="#2ecc71"/>
+  <rect x="30" y="62" width="290" height="8" fill="#2ecc71"/>
+  <text x="175" y="61" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Block 1: OSM Point Generator</text>
+  <text x="175" y="90" text-anchor="middle" font-size="11" fill="#555">Interactive map for study area selection</text>
+  <text x="175" y="108" text-anchor="middle" font-size="11" fill="#555">Extract streets from OpenStreetMap</text>
+  <text x="175" y="126" text-anchor="middle" font-size="11" fill="#555">Generate sample points along streets</text>
+  <text x="175" y="148" text-anchor="middle" font-size="10" fill="#2ecc71" font-weight="600">Input: bounding box (lat/lon)</text>
+  <text x="175" y="166" text-anchor="middle" font-size="10" fill="#2ecc71" font-weight="600">Output: GeoPackage with points</text>
+
+  <!-- Arrow down -->
+  <line x1="175" y1="180" x2="175" y2="200" stroke="#2ecc71" stroke-width="1.5"/>
+  <polygon points="170,198 175,205 180,198" fill="#2ecc71"/>
+
+  <!-- Block 2: Street View -->
+  <rect x="30" y="210" width="290" height="140" rx="8" fill="#fff" stroke="#3498db" stroke-width="2"/>
+  <rect x="30" y="210" width="290" height="30" rx="8" fill="#3498db"/>
+  <rect x="30" y="232" width="290" height="8" fill="#3498db"/>
+  <text x="175" y="231" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Block 2: Street View Downloader</text>
+  <text x="175" y="260" text-anchor="middle" font-size="11" fill="#555">Batch download images at each point</text>
+  <text x="175" y="278" text-anchor="middle" font-size="11" fill="#555">4 directions: left, right, front, back</text>
+  <text x="175" y="296" text-anchor="middle" font-size="11" fill="#555">Resume mode, metadata tracking</text>
+  <text x="175" y="318" text-anchor="middle" font-size="10" fill="#3498db" font-weight="600">Input: GeoPackage + Google API key</text>
+  <text x="175" y="336" text-anchor="middle" font-size="10" fill="#3498db" font-weight="600">Output: image folder on Drive</text>
+
+  <!-- Arrow right from Block 2 to Block 3 -->
+  <line x1="320" y1="280" x2="360" y2="105" stroke="#999" stroke-width="1.5"/>
+  <polygon points="356,103 363,100 359,108" fill="#999"/>
+  <text x="345" y="180" text-anchor="middle" font-size="9" fill="#999" transform="rotate(-60 345 180)">images</text>
+
+  <!-- Block 3: VLM Loader -->
+  <rect x="370" y="40" width="170" height="100" rx="8" fill="#fff" stroke="#e94560" stroke-width="2"/>
+  <rect x="370" y="40" width="170" height="28" rx="8" fill="#e94560"/>
+  <rect x="370" y="62" width="170" height="6" fill="#e94560"/>
+  <text x="455" y="59" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Block 3: Load VLM</text>
+  <text x="455" y="84" text-anchor="middle" font-size="10" fill="#555">Install UVLM package</text>
+  <text x="455" y="100" text-anchor="middle" font-size="10" fill="#555">Select model + precision</text>
+  <text x="455" y="116" text-anchor="middle" font-size="10" fill="#555">4-bit on free T4 GPU</text>
+  <text x="455" y="132" text-anchor="middle" font-size="9" fill="#e94560" font-weight="600">11 models (LLaVA + Qwen)</text>
+
+  <!-- Arrow down -->
+  <line x1="455" y1="140" x2="455" y2="158" stroke="#e94560" stroke-width="1.5"/>
+  <polygon points="450,156 455,163 460,156" fill="#e94560"/>
+  <text x="475" y="153" font-size="8" fill="#e94560">model_ctx</text>
+
+  <!-- Block 4: Task Config -->
+  <rect x="370" y="168" width="170" height="100" rx="8" fill="#fff" stroke="#f37626" stroke-width="2"/>
+  <rect x="370" y="168" width="170" height="28" rx="8" fill="#f37626"/>
+  <rect x="370" y="190" width="170" height="6" fill="#f37626"/>
+  <text x="455" y="187" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Block 4: Configure</text>
+  <text x="455" y="212" text-anchor="middle" font-size="10" fill="#555">Define prompts + tasks</text>
+  <text x="455" y="228" text-anchor="middle" font-size="10" fill="#555">Set generation params</text>
+  <text x="455" y="244" text-anchor="middle" font-size="10" fill="#555">Enable consensus / CoT</text>
+  <text x="455" y="260" text-anchor="middle" font-size="9" fill="#f37626" font-weight="600">Up to 10 tasks per run</text>
+
+  <!-- Arrow down -->
+  <line x1="455" y1="268" x2="455" y2="286" stroke="#f37626" stroke-width="1.5"/>
+  <polygon points="450,284 455,291 460,284" fill="#f37626"/>
+  <text x="475" y="281" font-size="8" fill="#f37626">task_specs</text>
+
+  <!-- Block 5: Run Analysis -->
+  <rect x="370" y="296" width="170" height="100" rx="8" fill="#fff" stroke="#9b59b6" stroke-width="2"/>
+  <rect x="370" y="296" width="170" height="28" rx="8" fill="#9b59b6"/>
+  <rect x="370" y="318" width="170" height="6" fill="#9b59b6"/>
+  <text x="455" y="315" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Block 5: Run Analysis</text>
+  <text x="455" y="340" text-anchor="middle" font-size="10" fill="#555">Batch process all images</text>
+  <text x="455" y="356" text-anchor="middle" font-size="10" fill="#555">Resume + truncation detect</text>
+  <text x="455" y="372" text-anchor="middle" font-size="10" fill="#555">CSV output to Drive</text>
+  <text x="455" y="388" text-anchor="middle" font-size="9" fill="#9b59b6" font-weight="600">uvlm.run_batch()</text>
+
+  <!-- UVLM badge -->
+  <rect x="560" y="170" width="155" height="55" rx="6" fill="#1a1a2e"/>
+  <text x="637" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">UVLM Package</text>
+  <text x="637" y="210" text-anchor="middle" font-size="9" fill="#8ecae6">pip install from GitHub</text>
+  <!-- Bracket connecting blocks 3-5 to UVLM -->
+  <line x1="540" y1="90" x2="555" y2="90" stroke="#1a1a2e" stroke-width="1"/>
+  <line x1="555" y1="90" x2="555" y2="346" stroke="#1a1a2e" stroke-width="1"/>
+  <line x1="540" y1="218" x2="555" y2="218" stroke="#1a1a2e" stroke-width="1"/>
+  <line x1="540" y1="346" x2="555" y2="346" stroke="#1a1a2e" stroke-width="1"/>
+  <line x1="555" y1="197" x2="560" y2="197" stroke="#1a1a2e" stroke-width="1"/>
+
+  <!-- Arrow right from Block 5 to Block 6 -->
+  <line x1="540" y1="370" x2="600" y2="370" stroke="#999" stroke-width="1.5"/>
+  <line x1="600" y1="370" x2="740" y2="250" stroke="#999" stroke-width="1.5"/>
+  <polygon points="737,247 745,247 740,254" fill="#999"/>
+  <text x="660" y="325" text-anchor="middle" font-size="9" fill="#999">CSV results</text>
+
+  <!-- Block 6: Mapping -->
+  <rect x="740" y="105" width="150" height="200" rx="8" fill="#fff" stroke="#f1c40f" stroke-width="2"/>
+  <rect x="740" y="105" width="150" height="28" rx="8" fill="#f1c40f"/>
+  <rect x="740" y="127" width="150" height="6" fill="#f1c40f"/>
+  <text x="815" y="124" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Block 6: Map</text>
+  <text x="815" y="152" text-anchor="middle" font-size="10" fill="#555">Score aggregation</text>
+  <text x="815" y="170" text-anchor="middle" font-size="10" fill="#555">Point + street level</text>
+  <text x="815" y="188" text-anchor="middle" font-size="10" fill="#555">View filter (L/R/F/B)</text>
+  <text x="815" y="206" text-anchor="middle" font-size="10" fill="#555">Custom colormaps</text>
+  <text x="815" y="232" text-anchor="middle" font-size="10" fill="#f1c40f" font-weight="600">Interactive HTML maps</text>
+  <text x="815" y="248" text-anchor="middle" font-size="10" fill="#f1c40f" font-weight="600">via Folium</text>
+
+  <!-- GeoPackage arrow from Block 1 to Block 6 -->
+  <line x1="320" y1="110" x2="340" y2="110" stroke="#999" stroke-width="1"/>
+  <line x1="340" y1="110" x2="340" y2="35" stroke="#999" stroke-width="1"/>
+  <line x1="340" y1="35" x2="815" y2="35" stroke="#999" stroke-width="1"/>
+  <line x1="815" y1="35" x2="815" y2="105" stroke="#999" stroke-width="1.5"/>
+  <polygon points="810,103 815,110 820,103" fill="#999"/>
+  <text x="580" y="30" text-anchor="middle" font-size="9" fill="#999">GeoPackage (points + streets)</text>
+
+  <!-- Footer -->
+  <text x="450" y="412" text-anchor="middle" font-size="9" fill="#aaa">SAGAI v2.0 &#x2014; github.com/perezjoan/SAGAI &#x2014; Apache 2.0</text>
+</svg>
