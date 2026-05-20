@@ -1,9 +1,45 @@
-SAGAI version: 1.0.0  
-Release date: 2025-04-18  
-Author: Joan Perez
-Description: Initial public release of SAGAI – a modular workflow for vision-language scoring and mapping of street-level scenes using open geospatial data and generative AI.  
-Modules:  
-- Module 1: OSM Point Generator – v1.0.0  
-- Module 2: Street View Batch Downloader – v1.0.0  
-- Module 3: Image-Based Inference with LLaVA – v1.0.0  
-- Module 4: Aggregation & Mapping – v1.0.0  
+SAGAI â€” Version History
+=======================
+ 
+v2.0 (May 2026) â€” Unified notebook + UVLM integration
+-------------------------------------------------------
+- Refactored: Four separate module notebooks merged into a single unified
+  notebook (SAGAIv2.ipynb) with six sequential blocks.
+- Replaced: Inline LLaVA-only inference code (Blocks 3-5) with the official
+  UVLM package (https://github.com/perezjoan/UVLM), installed automatically
+  from GitHub.
+- Added: Support for 11 VLM checkpoints (7 LLaVA-NeXT + 4 Qwen2.5-VL)
+  via UVLM's dual-backend abstraction.
+- Added: Multi-task prompt builder (up to 10 tasks per run).
+- Added: Consensus validation with majority voting (2-5 runs per task).
+- Added: Chain-of-thought reasoning support with adjustable token budget
+  (up to 1,500 tokens).
+- Added: Truncation detection with per-task CSV flags.
+- Added: Interactive HTML maps via Folium (replaces static Matplotlib maps).
+- Added: View filter for aggregation (all/left/right/front/back views).
+- Removed: Separate module notebooks and per-module NOTICE files.
+- Removed: requirements_sagai_module_3_v1-0.txt (dependencies handled by UVLM).
+ 
+v1.1 (December 2025)
+---------------------
+- Refactored: Module 3 switched from cloning the LLaVA GitHub repository
+  to using the official Hugging Face LLaVA-Next implementation
+  (LlavaNextProcessor and LlavaNextForConditionalGeneration).
+- Fixed: Compatibility issues with Colab backend updates (Python 3.12,
+  NumPy >= 2.0, PyTorch >= 2.2).
+- Improved: Reproducibility and compatibility with future Colab updates.
+- Added: Support for loading any HF-hosted LLaVA model.
+ 
+v1.0 (June 2025) â€” Initial public release
+------------------------------------------
+- Module 1: OSM Point Generator â€” extract street networks and sample points
+  within a bounding box using OSMnx.
+- Module 2: Street View Batch Downloader â€” download Google Street View images
+  at each point in up to 4 directions.
+- Module 3: Scene Assessment with LLaVA â€” score images using LLaVA v1.6
+  Mistral-7B with predefined or custom prompts.
+- Module 4: Aggregation & Mapping â€” aggregate scores to point and street
+  levels, generate thematic maps.
+- Predefined tasks: T1 (urban/rural classification), T2 (storefront counting),
+  T3 (sidewalk width estimation).
+- Pilot case studies: Nice (France) and Vienna (Austria).
