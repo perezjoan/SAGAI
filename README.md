@@ -30,7 +30,7 @@ No pretraining, no fine-tuning, no human annotation required. Define your scorin
 
 SAGAI v2.0 is organized as a single Colab notebook with **six sequential blocks**:
 
-`[INSERT FIGURE: figure_sagai_architecture.svg]`
+![SAGAI Architecture](figure_sagai_architecture.svg)
 
 | Block | Function | Description |
 |-------|----------|-------------|
