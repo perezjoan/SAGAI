@@ -49,7 +49,7 @@ Blocks 1–2 handle geospatial data. Blocks 3–5 handle VLM inference via UVLM.
 
 SAGAI runs in **Google Colab** with no local installation required.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/perezjoan/SAGAI/blob/main/SAGAIv2.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/perezjoan/SAGAI/blob/main/SAGAI.ipynb)
 
 1. **Open the notebook** in Google Colab (link above)
 2. **Select a GPU runtime**: `Runtime` → `Change runtime type` → `T4 GPU`
