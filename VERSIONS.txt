@@ -1,6 +1,22 @@
 SAGAI — Version History
 =======================
  
+v2.1 (May 2026) — Resume support + full spatial join
+------------------------------------------------------
+- Added: Block 0 — Resume Case Study. Mounts Drive, scans for existing
+  case studies, and sets case_study_name via dropdown. Detects which
+  data already exists on Drive (GeoPackage, images, analysis CSV) and
+  indicates which blocks can be skipped: straight to Block 3 if points
+  and images exist, or straight to Block 6 if the analysis CSV is also
+  present.
+- Changed: Block 6 now aggregates ALL task columns from the CSV to the
+  output GeoPackage (mean, sum, median, variance + per-view-direction
+  means), regardless of which indicator is selected for map display.
+  The mapping selection controls only the visual output.
+- Added: Per-view-direction scores (e.g., task_1_left, task_1_right)
+  computed from unfiltered data and joined to both points and streets
+  layers in the output GeoPackage.
+
 v2.0 (May 2026) — Unified notebook + UVLM integration
 -------------------------------------------------------
 - Refactored: Four separate module notebooks merged into a single unified
