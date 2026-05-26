@@ -7,7 +7,7 @@
 
 **SAGAI** is an open-source workflow for scoring and mapping street-level urban environments using **Vision-Language Models (VLMs)**. It automates the full pipeline: from street sampling via OpenStreetMap, to imagery retrieval via Google Street View, multi-model VLM scoring via **[UVLM](https://github.com/perezjoan/UVLM)**, and geospatial aggregation into thematic maps.
 
-Starting with v2.0, SAGAI is a **single unified Google Colab notebook** with six sequential blocks. VLM inference is powered by the UVLM package, which supports **11 model checkpoints** across two families (LLaVA-NeXT and Qwen2.5-VL) with multi-task prompting, consensus validation, and chain-of-thought reasoning.
+Starting with v2.1, SAGAI is a **single unified Google Colab notebook** with six sequential blocks. VLM inference is powered by the UVLM package, which supports **11 model checkpoints** across two families (LLaVA-NeXT and Qwen2.5-VL) with multi-task prompting, consensus validation, and chain-of-thought reasoning.
 
 💡 **Zero-shot. Multi-model. Prompt-based. One notebook.**
 
@@ -28,12 +28,13 @@ No pretraining, no fine-tuning, no human annotation required. Define your scorin
 
 ## 📐 Architecture
 
-SAGAI v2.0 is organized as a single Colab notebook with **six sequential blocks**:
+SAGAI v2.1 is organized as a single Colab notebook with **six sequential blocks**:
 
 ![SAGAI Architecture](figure_sagai_architecture.svg)
 
 | Block | Function | Description |
 |-------|----------|-------------|
+| **Block 0** | Resume Case Study | Optional. |
 | **Block 1** | OSM Point Generator | Interactive map for defining a study area. Extracts streets from OSM and generates sample points along them. |
 | **Block 2** | Street View Downloader | Batch downloads Google Street View images at each point in up to 4 directions. Requires a Google Maps API key. |
 | **Block 3** | VLM Loader (UVLM) | Installs the [UVLM package](https://github.com/perezjoan/UVLM) and loads a selected model with quantization and device placement. |
