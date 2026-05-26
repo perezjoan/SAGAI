@@ -1,7 +1,7 @@
 # Streetscape Analysis with Generative AI (SAGAI)
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-v2.0-brightgreen)](https://github.com/perezjoan/SAGAI/releases)
+[![Version](https://img.shields.io/badge/Version-v2.1-brightgreen)](https://github.com/perezjoan/SAGAI/releases)
 [![Colab Compatible](https://img.shields.io/badge/Google%20Colab-Compatible-yellow.svg)](https://colab.research.google.com/)
 [![UVLM](https://img.shields.io/badge/VLM%20Engine-UVLM-orange.svg)](https://github.com/perezjoan/UVLM)
 
