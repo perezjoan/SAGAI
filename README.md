@@ -1,7 +1,7 @@
 # Streetscape Analysis with Generative AI (SAGAI)
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-v2.1-brightgreen)](https://github.com/perezjoan/SAGAI/releases)
+[![Version](https://img.shields.io/badge/Version-v2.2-brightgreen)](https://github.com/perezjoan/SAGAI/releases)
 [![Colab Compatible](https://img.shields.io/badge/Google%20Colab-Compatible-yellow.svg)](https://colab.research.google.com/)
 [![UVLM](https://img.shields.io/badge/VLM%20Engine-UVLM-orange.svg)](https://github.com/perezjoan/UVLM)
 
@@ -28,7 +28,7 @@ No pretraining, no fine-tuning, no human annotation required. Define your scorin
 
 ## 📐 Architecture
 
-SAGAI v2.1 is organized as a single Colab notebook with **six sequential blocks**:
+SAGAI v2.x is organized as a single Colab notebook with **six sequential blocks**, plus optional block 0:
 
 ![SAGAI Architecture](figure_sagai_architecture.svg)
 
@@ -103,7 +103,7 @@ Due to Google's Terms of Service, raw Street View images are not distributed.
 
 ```
 SAGAI/
-├── SAGAIv2.ipynb                       # Unified notebook (all 6 blocks)
+├── SAGAI.ipynb                       # Unified notebook (all 6 + 1 blocks)
 ├── README.md                           # This file
 ├── LICENSE                             # Apache License 2.0
 ├── .gitignore
