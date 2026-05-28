@@ -7,7 +7,7 @@
 
 **SAGAI** is an open-source workflow for scoring and mapping street-level urban environments using **Vision-Language Models (VLMs)**. It automates the full pipeline: from street sampling via OpenStreetMap, to imagery retrieval via Google Street View, multi-model VLM scoring via **[UVLM](https://github.com/perezjoan/UVLM)**, and geospatial aggregation into thematic maps.
 
-Starting with v2.1, SAGAI is a **single unified Google Colab notebook** with six sequential blocks. VLM inference is powered by the UVLM package, which supports **11 model checkpoints** across two families (LLaVA-NeXT and Qwen2.5-VL) with multi-task prompting, consensus validation, and chain-of-thought reasoning.
+Starting with v2.x, SAGAI is a **single unified Google Colab notebook** with six sequential blocks (plus optional block 0 to resume a case study). VLM inference is powered by the UVLM package, which supports **11 model checkpoints** across two families (LLaVA-NeXT and Qwen2.5-VL) with multi-task prompting, consensus validation, and chain-of-thought reasoning.
 
 💡 **Zero-shot. Multi-model. Prompt-based. One notebook.**
 
@@ -42,7 +42,7 @@ SAGAI v2.1 is organized as a single Colab notebook with **six sequential blocks*
 | **Block 5** | Run Analysis | Processes all images through the configured tasks using UVLM's batch engine. Outputs a CSV with one row per image. |
 | **Block 6** | Aggregation & Mapping | Aggregates image-level scores to point and street levels. Generates interactive HTML maps with Folium. |
 
-Blocks 1–2 handle geospatial data. Blocks 3–5 handle VLM inference via UVLM. Block 6 handles visualization. Each block can be re-run independently.
+Blocks 1–2 handle geospatial data. Blocks 3–5 handle VLM inference via UVLM. Block 6 handles visualization. Optional block 0 is to resume a case study. Each block can be re-run independently.
 
 ---
 
@@ -116,9 +116,9 @@ SAGAI/
 
 ## ⚠️ What Changed in v2.0
 
-| Aspect | v1.x | v2.0 |
+| Aspect | v1.x | v2.x |
 |--------|------|------|
-| **Structure** | 4 separate notebooks | 1 unified notebook (6 blocks) |
+| **Structure** | 4 separate notebooks | 1 unified notebook (6 + 1 blocks) |
 | **VLM support** | LLaVA-only (inline code) | 11 models via UVLM package (LLaVA + Qwen) |
 | **Multi-task** | Single task per run | Up to 10 tasks per run |
 | **Consensus** | Not available | Majority voting (2–5 runs) |
