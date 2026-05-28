@@ -1,6 +1,16 @@
 SAGAI — Version History
 =======================
- 
+
+v2.2 (May 2026) — Chain-of-thought format fix
+------------------------------------------------
+- Fixed: Block 4 now injects ADVANCED_REASONING_FORMATS from UVLM when
+  advanced reasoning (chain-of-thought) is enabled, matching the behavior
+  of the UVLM notebook. Previously the format widget value was passed
+  through unchanged, meaning the model was never instructed to write
+  "ANSWER: <value>" on its last line. The parser relied on a fallback
+  regex (last number / first keyword) which worked by coincidence for
+  numeric tasks but was unreliable for boolean and category tasks.
+
 v2.1 (May 2026) — Resume support + full spatial join
 ------------------------------------------------------
 - Added: Block 0 — Resume Case Study. Mounts Drive, scans for existing
