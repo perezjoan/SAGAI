@@ -1,6 +1,36 @@
 SAGAI — Version History
 =======================
 
+v2.3 (August 2026) — UVLM v4.0.0 pin, five model families, per-model CSVs
+--------------------------------------------------------------------------
+- Changed: Block 3 now installs UVLM pinned to the v4.0.0 tag
+  (git+https://github.com/perezjoan/UVLM.git@v4.0.0) instead of tracking
+  the main branch. SAGAI's behavior no longer changes silently with new
+  UVLM releases. UVLM 4.x runs on transformers >= 5.15; all five backends
+  were re-validated on GPU under that stack on the UVLM side (see UVLM
+  v4.0.0 release notes).
+- Added: Support for 24 VLM checkpoints across five families — LLaVA-NeXT
+  (7), Qwen2.5-VL (4), Qwen3-VL (4), InternVL3.5 (6), and Gemma 4 (3) —
+  exposed through UVLM's registry.
+- Changed: Block 3 model selection is now two-level (family first, then
+  model), using UVLM's FAMILY_GROUPS mapping instead of the flat
+  MODEL_CHOICES list.
+- Added: Hardware guidance note in Block 3 (Gemma 4 E2B requires FP16 when
+  CPU offload is needed; E4B / 12B and 72B+ models need L4 / A100 runtimes).
+- Fixed: Block 4 output filenames are now derived from the loaded
+  checkpoint (Score_Analysis_<checkpoint>.csv), porting the UVLM v3.2.0
+  fix. Previously one file per backend was shared by all models of a
+  family, which allowed different models to append into the same CSV and
+  contaminate resume mode. Resume and schema upgrades are now per-model.
+- Changed: Blocks 0 and 6 handle multiple coexisting per-model CSVs.
+  Block 0 lists all analysis CSVs found for a case study; Block 6 uses
+  the most recently modified CSV and prints which one was selected.
+- Docs: README updated — five families (was incorrectly "two"), UVLM
+  renamed to "Unified" (v3.0.2 naming), UVLM citation updated from the
+  arXiv preprint to the published version (Software 2026, 5(3), 30),
+  third-party attribution extended (Qwen3-VL, InternVL, Gemma 4,
+  BitsAndBytes).
+
 v2.2 (May 2026) — Chain-of-thought format fix
 ------------------------------------------------
 - Fixed: Block 4 now injects ADVANCED_REASONING_FORMATS from UVLM when
