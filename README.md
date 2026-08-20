@@ -7,7 +7,7 @@
 
 **SAGAI** is an open-source workflow for scoring and mapping street-level urban environments using **Vision-Language Models (VLMs)**. It automates the full pipeline: from street sampling via OpenStreetMap, to imagery retrieval via Google Street View, multi-model VLM scoring via **[UVLM](https://github.com/perezjoan/UVLM)**, and geospatial aggregation into thematic maps.
 
-Starting with v2.x, SAGAI is a **single unified Google Colab notebook** with six sequential blocks (plus optional block 0 to resume a case study). VLM inference is powered by the UVLM package, which supports **11 model checkpoints** across two families (LLaVA-NeXT and Qwen2.5-VL) with multi-task prompting, consensus validation, and chain-of-thought reasoning.
+Starting with v2.x, SAGAI is a **single unified Google Colab notebook** with six sequential blocks (plus optional block 0 to resume a case study). VLM inference is powered by the UVLM package, which supports **24 model checkpoints** across two families (LLaVA-NeXT, Qwen2.5-VL, Qwen3-VL, InternVL3.5, and Gemma 4) with multi-task prompting, consensus validation, and chain-of-thought reasoning.
 
 💡 **Zero-shot. Multi-model. Prompt-based. One notebook.**
 
@@ -19,7 +19,7 @@ SAGAI combines open-access geospatial tools with vision-language AI into a singl
 
 - ✅ **OpenStreetMap (OSM)** — automatic extraction of street networks within a bounding box, with configurable point sampling along streets
 - 📸 **Google Street View API** — batch downloading of street-level images at each point, with multi-directional capture (left, right, front, back)
-- 🧠 **UVLM** — unified inference across 11 VLM checkpoints (LLaVA-NeXT + Qwen2.5-VL), with multi-task prompting, consensus validation, and reasoning support
+- 🧠 **UVLM** — unified inference across 24 VLM checkpoints (LLaVA-NeXT, Qwen2.5-VL, Qwen3-VL, InternVL3.5, and Gemma 4), with multi-task prompting, consensus validation, and reasoning support
 - 🗺️ **GeoPandas + Folium** — geospatial aggregation and interactive HTML map generation at point and street levels
 
 No pretraining, no fine-tuning, no human annotation required. Define your scoring tasks as natural language prompts and run them at scale.
@@ -73,7 +73,7 @@ SAGAI runs in **Google Colab** with no local installation required.
 
 Blocks 3–5 are powered by **[UVLM](https://github.com/perezjoan/UVLM)** (Universal Vision-Language Model Loader), a separate open-source package that provides:
 
-- **11 model checkpoints** — 7 LLaVA-NeXT + 4 Qwen2.5-VL, from 3B to 110B parameters
+- **24 model checkpoints** — from 3B to 110B parameters
 - **Dual-backend abstraction** — automatically routes to the correct inference pipeline (LLaVA or Qwen)
 - **Multi-task prompt builder** — up to 10 tasks per run, with four response types (numeric, category, boolean, text)
 - **Consensus validation** — majority voting across 2–5 repeated inferences per task
